@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map with Marker</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_Hu2WvZJ_MNjUVyTKD0vkIqGSwW-nBc&libraries=places" defer></script>
+    <style>
+        /* Ensure the map takes up the full height of the page */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <input id="search-city" type="text">
+    <p id="weather"></p>
+    <div id="map"></div>
+</body>
+</html>
