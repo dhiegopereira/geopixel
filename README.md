@@ -10,7 +10,8 @@
 - [jest](https://jestjs.io/pt-BR/)
 - [cypress](https://www.cypress.io/)
 
-> Deploy da aplicação: 
+## Deploy da aplicação: 
+[black-hare-cap.cyclic.app/](https://black-hare-cap.cyclic.app/?cityName=S%C3%A3o+Paulo)
 
 ## Como Clonar
 ```bash
