@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn ./src/index.ts",
     "build": "tsc && npm run copy-views && npm run start",
-    "copy-views": "xcopy /s /i /e \"src\\views\" \"dist\\views\"",
+    "copy-views": "cp -r src/views dist/",
     "start": "node ./dist/index.js",
     "jest": "jest",
     "cypress": "cypress open"
