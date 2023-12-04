@@ -68,6 +68,8 @@ main {
 
 .weather-forecast {
     width: 20%;
+    overflow: auto;
+    height: 450px;
 }
 
 .weather-forecast_title {
@@ -106,6 +108,7 @@ main {
 
 
 footer {
+    margin-top: 50px;
     width: 100%;
     background-color: #4CAF50;
     padding: 15px;
