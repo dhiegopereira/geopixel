@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo_Hu2WvZJ_MNjUVyTKD0vkIqGSwW-nBc&callback=initMap"></script>
+    <link rel="stylesheet" href="/css/weather.css">
+    <link rel="stylesheet" href="/css/weatherResposive.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <form action="/" method="GET">
+                <label for="search-city">Escolha a cidade:</label>
+                <input data-cy="search-city" list="cities" name="cityName" id="search-city" type="text" placeholder="Ex: Sobral" autocomplete="off">
+
+                <% if (data && data.cities) { %>
+                    <datalist id="cities">
+                        <% data.cities.map(city=> { %>
+                            <option value="<%= city.name %>"></option>
+                        <% }) %>
+                    </datalist>
+                <% } %>
+
+                <button type="submit">Buscar Clima</button>
+            </form>
+
+            <img width="150" src="/img/logo.png" alt="">
+        </header>
+
+        <main>
+            <% if (data && data.weathers) { %>
+            <section class="weather-forecast">
+                <% data.weathers.forEach((weatherDay, index)=> { %>
+                    <div class="weather-forecast_items">
+                        <div class="weather-forecast_title">
+                            <h3 data-cy="weather-forecast-title">Previsão para <%= index === 0 ? 'Hoje' : weatherDay.date %>: </h3>
+                            <img src="<%= weatherDay.iconUrl %>" alt="">
+                        </div>
+                        <ul data-cy="weathers">
+                            <li>
+                                Temperatura: <%= weatherDay.temperature %>
+                            </li>
+                            <li>
+                                Temp. Min: <%= weatherDay.minTemperature %> | Max: <%= weatherDay.maxTemperature %>
+                            </li>
+                            <li>
+                                Descrição: <%= weatherDay.weatherDescription %>                                
+                            </li>
+                        </ul>
+                    </div>
+                    
+                <% }) %>
+            </section>
+            <section id="map"></section>
+            <script>
+                function initMap() {
+                    const location = {
+                        lat: <%= data.cities[data.cities.length - 1].location.lat %>,
+                        lng: <%= data.cities[data.cities.length - 1].location.lng %> 
+                    }
+
+                    const map = new google.maps.Map(document.querySelector('#map'), {
+                        center: location,
+                        zoom: 12
+                    });
+
+                    new google.maps.Marker({
+                        position: location,
+                        map: map,
+                        title: ''
+                    });
+                }
+            </script>
+            <% } else { %>
+                <div class="welcome"></div>
+            <% }  %>
+        </main>   
+
+        <footer>
+            <img width="150" src="/img/logo.png" alt="">
+        </footer>
+    </div>
+</body>
+
+</html>
